@@ -23,7 +23,7 @@ function Movies() {
     };
 
         return (
-            <div className="bg-danger">
+            <div className="bg-danger" style={{ height: "100vh" }}>
                 <div className="container">
                     <p className="pt-4" style={{ textShadow: "5px 5px 5px black", fontSize: "50px", color: "white" }}>ULTIMOS ESTRENOS</p>
                     <div className="row m-0 w-100 mx-auto">
