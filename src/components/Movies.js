@@ -23,7 +23,7 @@ function Movies() {
     };
 
         return (
-            <div className="bg-danger" style={{ height: "100vh" }}>
+            <div className="bg-danger">
                 <div className="container">
                     <p className="pt-4" style={{ textShadow: "5px 5px 5px black", fontSize: "50px", color: "white" }}>ULTIMOS ESTRENOS</p>
                     <div className="row m-0 w-100 mx-auto">
@@ -31,16 +31,17 @@ function Movies() {
                         { movies.map( movie => 
                             <div className="col-md-3 col-sm-4 col-12" key={ movie._id }>
                                 
-                                <div className="card-group h-100">
+                                <div className="card-group">
                                     <div className="card my-5" style={{ boxShadow: "5px 5px 5px black" }}>
                                         <div className="card-header p-0">
                                             <img src={ movie.poster } className="img-fluid" alt="" />
                                         </div>
                                         <div className="card-body h-100" style={{ gridTemplateColumns: "60px", gridTemplateRows: "90px 90px 90px"}}>
                                         
-                                            <p className="m-1"> { movie.title } </p> 
+                                        <div style={{ height: "80px" }}>
+                                            <p className="m-1"> { movie.title } </p>
                                             <h6 className="m-1"> { movie.years } </h6>
-
+                                        </div>
                                             
                                             <Link to={`/movie/${movie._id}`}>
                                                 <button className="btn btn-danger">DETALLE</button>
