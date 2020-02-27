@@ -1,6 +1,6 @@
 const { MongoClient, ObjectId } = require("mongodb");
 
-const { MONGO_URL_STRING: uri, MONGO_DB_NAME: dbName } = process.env;
+const { MONGODB_URL_DB: uri , MONGO_DB_NAME: dbName } = process.env;
 
 const config = { useUnifiedTopology: true };
 

@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
 // import Details from '../Details'
 // import './App.css';
@@ -9,7 +11,7 @@ function Details({ match }) {
     useEffect(() => {
         fetchItem();
         // console.log(match)
-    }, []);
+    });
 
     const [ movie, setMovie ] = useState([]);
 
@@ -36,7 +38,7 @@ function Details({ match }) {
 
             
                 
-                <h1 align="left" className="pt-3 text-white"><Link to="/" className="btn btn-danger">Volver</Link> {movie.title} ({ movie.years })</h1>
+                <h1 align="left" className="pt-3 text-white"><Link to="/" className="btn btn-danger"><FontAwesomeIcon icon={faAngleLeft} size="lg" /></Link> {movie.title} ({ movie.years })</h1>
                 <hr />
 
                 <div className="row">

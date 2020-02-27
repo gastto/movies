@@ -22,27 +22,14 @@ function Movies() {
 
     };
 
-//     constructor() {
-//         super();
-//         this.state = {
-//             movies: []
-//         }
-//     }
-
-//     componentDidMount() {
-//         fetch('/api/peliculas')
-//         .then(res => res.json())
-//         .then(movies => this.setState({movies}, () => console.log('movies fetched...', movies)));
-//     }
-
         return (
             <div className="bg-danger">
                 <div className="container">
                     <p className="pt-4" style={{ textShadow: "5px 5px 5px black", fontSize: "50px", color: "white" }}>ULTIMOS ESTRENOS</p>
                     <div className="row m-0 w-100 mx-auto">
                         
-                        { movies.map(movie => 
-                            <div className="col-3" key={movie._id}>
+                        { movies.map( movie => 
+                            <div className="col-md-3 col-sm-4 col-12" key={ movie._id }>
                                 
                                 <div className="card-group h-100">
                                     <div className="card my-5" style={{ boxShadow: "5px 5px 5px black" }}>
@@ -56,7 +43,7 @@ function Movies() {
 
                                             
                                             <Link to={`/movie/${movie._id}`}>
-                                                <button className="btn btn-primary">DETALLE</button>
+                                                <button className="btn btn-danger">DETALLE</button>
                                             </Link>
                                         
                                         </div>
