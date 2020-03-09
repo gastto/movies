@@ -1,29 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import {movieContext} from '../context/movieContext'
 
 // import Details from '../Details'
 // import './App.css';
 
-function Movies() {
+const Movies= () => {
 
-    useEffect(() => {
-        fetchItems();
-    }, [])
+    const [movies, setMovies] = useContext(movieContext)
 
-    const [movies, setMovies] = useState([]);
+    // useEffect(() => {
+    //     fetchItems();
+    // }, [])
 
-    const fetchItems = async () => {
+    // const [movies, setMovies] = useState([]);
 
-        const data = await fetch('http://localhost:8080/api/peliculas');
+    // const fetchItems = async () => {
 
-            const movies = await data.json();
-            // console.log(movies)
-            setMovies(movies)
+    //     const data = await fetch('http://localhost:8080/api/peliculas');
 
-    };
+    //         const movies = await data.json();
+    //         // console.log(movies)
+    //         setMovies(movies)
+
+    // };
 
         return (
             <div className="bg-danger">
+
                 <div className="container">
                     <p className="pt-4" style={{ textShadow: "5px 5px 5px black", fontSize: "50px", color: "white" }}>ULTIMOS ESTRENOS</p>
                     <div className="row m-0 w-100 mx-auto">
