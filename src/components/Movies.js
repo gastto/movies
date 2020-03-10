@@ -1,29 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {movieContext} from '../context/movieContext'
+import { movieContext } from '../context/movieContext'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 // import Details from '../Details'
 // import './App.css';
 
-const Movies= () => {
+const Movies = () => {
 
-    const [movies, setMovies] = useContext(movieContext)
-
-    // useEffect(() => {
-    //     fetchItems();
-    // }, [])
-
-    // const [movies, setMovies] = useState([]);
-
-    // const fetchItems = async () => {
-
-    //     const data = await fetch('http://localhost:8080/api/peliculas');
-
-    //         const movies = await data.json();
-    //         // console.log(movies)
-    //         setMovies(movies)
-
-    // };
+    const [movies, isLoading, isError] = useContext(movieContext)
 
         return (
             <div className="bg-danger">
@@ -31,8 +18,14 @@ const Movies= () => {
                 <div className="container">
                     <p className="pt-4" style={{ textShadow: "5px 5px 5px black", fontSize: "50px", color: "white" }}>ULTIMOS ESTRENOS</p>
                     <div className="row m-0 w-100 mx-auto">
+
+                        { isError && <div>Something went wrong ...</div>}
                         
-                        { movies.map( movie => 
+                        { !isLoading ? ( 
+                        
+                        <div style={{margin: "auto",padding: "10px",color: "white"}}>loading <FontAwesomeIcon icon={ faSpinner } class="fa-spin" size="xs" /></div> ) :
+                        
+                        (movies.map( movie => (
                             <div className="col-md-3 col-sm-4 col-12" key={ movie._id }>
                                 
                                 <div className="card-group">
@@ -55,7 +48,7 @@ const Movies= () => {
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        )))}
                             
                     </div>
                 </div>
