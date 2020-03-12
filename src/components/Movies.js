@@ -10,7 +10,9 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 const Movies = () => {
 
-    const [movies, isLoading, isError] = useContext(movieContext)
+    const [movies, setMovies] = useContext(movieContext)
+    const [isError] = useContext(movieContext)
+    const [isLoading] = useContext(movieContext)
 
         return (
             <div className="bg-danger">
@@ -19,7 +21,7 @@ const Movies = () => {
                     <p className="pt-4" style={{ textShadow: "5px 5px 5px black", fontSize: "50px", color: "white" }}>ULTIMOS ESTRENOS</p>
                     <div className="row m-0 w-100 mx-auto">
 
-                        { isError && <div>Something went wrong ...</div>}
+                        { !isError && <div>Something went wrong ...</div>}
                         
                         { !isLoading ? ( 
                         
@@ -31,9 +33,9 @@ const Movies = () => {
                                 <div className="card-group">
                                     <div className="card my-5" style={{ boxShadow: "5px 5px 5px black" }}>
                                         <div className="card-header p-0">
-                                            <img src={ movie.poster } className="img-fluid" alt="" />
+                                            <img onLoad={<FontAwesomeIcon icon={ faSpinner } class="fa-spin" size="xs" />} src={ movie.poster } className="img-fluid" alt="" />
                                         </div>
-                                        <div className="card-body h-100" style={{ gridTemplateColumns: "60px", gridTemplateRows: "90px 90px 90px"}}>
+                                        <div className="card-body" style={{ gridTemplateColumns: "60px", gridTemplateRows: "90px 90px 90px"}}>
                                         
                                         <div style={{ height: "80px" }}>
                                             <p className="m-1"> { movie.title } </p>

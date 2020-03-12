@@ -1,32 +1,36 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
-
+import { movieContext } from '../context/movieContext'
 
 // import Details from '../Details'
 // import './App.css';
 
-function Details({ match }) {
+function Details({match}) {
 
-    useEffect(() => {
-        fetchItem();
-        // console.log(match)
-    });
+    const [movies, setMovies] = useContext(movieContext)
 
-    const [ movie, setMovie ] = useState([]);
+    console.log(movies)
 
-    const fetchItem = async () => {
+    // useEffect(() => {
+    //     fetchItem();
+    //     // console.log(match)
+    // });
 
-        const fetchItem = await fetch(`http://localhost:8080/api/peliculas/${match.params.id}`);
+    // const [ movie, setMovie ] = useState([]);
 
-        const movie = await fetchItem.json();
+    // const fetchItem = async () => {
 
-        setMovie(movie);
+    //     const fetchItem = await fetch(`http://localhost:8080/api/peliculas/${match.params.id}`);
 
-        // console.log(movie)
+    //     const movie = await fetchItem.json();
+
+    //     setMovie(movie);
+
+    //     // console.log(movie)
       
-    };
+    // };
 
 
     return (
@@ -34,7 +38,7 @@ function Details({ match }) {
         <div className="bg-danger" style={{ height: "100vh" }}>
             
             
-        { movie.map( movie =>
+        { movies.map( movie => (movie._id === match.params.id) ?
             <div key={movie._id} className="container">
 
             
@@ -69,14 +73,11 @@ function Details({ match }) {
 
             </div>
 
+        : <React.Fragment></React.Fragment>  )}
+       
 
-        
-
-
-        )}
-    
-          
         </div>
+
         );
     }
 
