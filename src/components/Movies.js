@@ -4,9 +4,13 @@ import { movieContext } from '../context/movieContext'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import ReactImageAppear from 'react-image-appear';
+import PlaceHolder from '../public/placeholder.png';
 
 // import Details from '../Details'
 // import './App.css';
+
+
 
 const Movies = () => {
 
@@ -32,8 +36,22 @@ const Movies = () => {
                                 
                                 <div className="card-group">
                                     <div className="card my-5" style={{ boxShadow: "5px 5px 5px black" }}>
-                                        <div className="card-header p-0">
-                                            <img onLoad={<FontAwesomeIcon icon={ faSpinner } class="fa-spin" size="xs" />} src={ movie.poster } className="img-fluid" alt="" />
+                                        <div className="card-header p-0" style={{ position:"relative" }}>
+                                        
+                                            <img src={PlaceHolder} className="w-100" style={{ zIndex:"-1" }} alt=""/>
+                                        <div style={{ position:"absolute",left:"0",top:"0",height:"100%",width:"100%" }}>
+                                            <FontAwesomeIcon icon={ faSpinner } class="fa-spin" size="xs" style={{ width:"30px",height:"100%" }} />
+                                        </div>
+                                        <div style={{ position:"absolute", top:"0", left:"0" }}>
+                                            <ReactImageAppear 
+                                                className="my-image img-fluid"
+                                                src={ movie.poster }
+                                                animation="flipInY"
+                                                animationDuration="1s"
+                                                showLoader={false}
+                                            />
+
+                                        </div>
                                         </div>
                                         <div className="card-body" style={{ gridTemplateColumns: "60px", gridTemplateRows: "90px 90px 90px"}}>
                                         
